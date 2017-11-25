@@ -12,10 +12,13 @@
 
 RCT_EXPORT_MODULE();
 
-RCT_EXPORT_METHOD(send: (NSString*)name :(NSDictionary*)args){
-  [NewRelicAgent recordEvent:name attributes:args];
+RCT_EXPORT_METHOD(send: (NSString*)category :(NSDictionary*)args){
+  [NewRelicAgent recordCustomEvent:category attributes:args];
 }
 
+RCT_EXPORT_METHOD(metric: (NSString*)name: (NSString*)category: (nonnull NSNumber*)value){
+  [NewRelicAgent recordMetricWithName:name category:category value:value];
+}
 
 RCT_EXPORT_METHOD(setAttribute: (NSString*)name: (NSString*)value){
   [NewRelicAgent setAttribute:name value:value];

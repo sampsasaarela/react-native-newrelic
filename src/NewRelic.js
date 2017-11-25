@@ -87,6 +87,10 @@ class NewRelic {
     this.send(eventName, args);
   }
 
+  metric(nameStr, categoryStr, valueNumber) {
+    RNNewRelic.metric(String(nameStr), String(categoryStr), Number(valueNumber));
+  }
+
   /*
    logs a message to the native console (useful when running in release mode)
   */
